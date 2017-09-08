@@ -3,7 +3,8 @@
 #include <QtXml/qdom.h>
 #include <QtXml/QtXml>
 #include <QFile>
-
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
 readXML::readXML(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::readXML)
@@ -105,6 +106,43 @@ void readXML::readxml()
          node=node.nextSibling();
      }
 }
+void readXML::readxmlByStream()
+{
+    QFile file("first.xml");
+    if ( !file.open(QFile::ReadOnly|QFile::Text))
+        return;
+    QXmlStreamReader reader;
+    reader.setDevice(&file);
+    while( !reader.atEnd())
+    {
+        QXmlStreamReader::TokenType type=reader.readNext();
+        QString dis="";
+        if (type == QXmlStreamReader::StartDocument)
+        {
+            dis+=reader.documentEncoding().toString() + " "+reader.documentVersion().toString();
+        }
+        else  if(type == QXmlStreamReader::StartElement)
+        {
+            dis+="< "+reader.name().toString()+" > ";
+            if (reader.attributes().hasAttribute("id"))
+                dis+=reader.attributes().value("id").toString();
+        }
+        else if(type == QXmlStreamReader::EndElement)
+        {
+            dis+="";
+        }
+        else if(type ==QXmlStreamReader::Characters && !reader.isWhitespace())
+        {
+            dis+=reader.text().toString();
+        }
+        if ( dis.length() > 0)
+            ui->listWidget_showXML->addItem(dis);
+    }
+    if (reader.hasError())
+        ui->listWidget_showXML->addItem("error:"+reader.errorString());
+    file.close();
+}
+
 void readXML::addnode(QString ititle, QString iauthor)
 {
     QFile file("first.xml");
@@ -211,7 +249,8 @@ bool readXML::xmlOperate(QString opType)
 void readXML::on_pushButton_show_clicked()
 {
    ui->listWidget_showXML->clear();
-    readxml();
+    //readxml();
+   readxmlByStream();
 }
 
 void readXML::on_pushButton_add_clicked()

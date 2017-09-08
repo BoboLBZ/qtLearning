@@ -20,6 +20,7 @@ private:
 protected:
     void createxml();
     void readxml();
+    void readxmlByStream();
     void addnode(QString ititle,QString iauthor);
     bool xmlOperate(QString opType);
 private slots:

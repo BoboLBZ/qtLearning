@@ -10,6 +10,7 @@ readXML::readXML(QWidget *parent) :
     ui(new Ui::readXML)
 {
     ui->setupUi(this);
+    writexmlByStream();
   //  createxml();
 //    readxml();
 }
@@ -73,9 +74,9 @@ void readXML::createxml()
     doc.save(out,4);
     file.close();
 }
-void readXML::readxml()
+void readXML::readxml(QString filename)
 {
-     QFile file("first.xml");
+     QFile file(filename);
      if( !file.open(QIODevice::ReadOnly)) return;
      QDomDocument doc;
      if( !doc.setContent(&file))
@@ -140,6 +141,24 @@ void readXML::readxmlByStream()
     }
     if (reader.hasError())
         ui->listWidget_showXML->addItem("error:"+reader.errorString());
+    file.close();
+}
+void readXML::writexmlByStream()
+{
+    QFile file("xmlwriteByStream.xml");
+    if (!file.open(QFile::WriteOnly|QFile::Text))
+        return ;
+    QXmlStreamWriter writer(&file);
+    writer.setAutoFormatting(true);
+    writer.writeStartDocument();
+    writer.writeStartElement("books");
+    writer.writeStartElement("book");
+    writer.writeAttribute("id","1");
+    writer.writeTextElement("title","110");
+    writer.writeTextElement("author","ttt");
+    writer.writeEndElement();
+    writer.writeEndElement();
+    writer.writeEndDocument();
     file.close();
 }
 
@@ -249,15 +268,15 @@ bool readXML::xmlOperate(QString opType)
 void readXML::on_pushButton_show_clicked()
 {
    ui->listWidget_showXML->clear();
-    //readxml();
-   readxmlByStream();
+    readxml("xmlwriteByStream.xml");
+   //readxmlByStream();
 }
 
 void readXML::on_pushButton_add_clicked()
 {
-      addnode(ui->lineEdit_title->text(),ui->lineEdit_author->text());
-      ui->listWidget_showXML->clear();
-       readxml();
+       addnode(ui->lineEdit_title->text(),ui->lineEdit_author->text());
+       ui->listWidget_showXML->clear();
+       readxml("first.xml");
 }
 
 void readXML::on_pushButton_find_clicked()

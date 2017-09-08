@@ -19,8 +19,9 @@ private:
     Ui::readXML *ui;
 protected:
     void createxml();
-    void readxml();
+    void readxml(QString filename);
     void readxmlByStream();
+    void writexmlByStream();
     void addnode(QString ititle,QString iauthor);
     bool xmlOperate(QString opType);
 private slots:

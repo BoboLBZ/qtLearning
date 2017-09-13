@@ -6,7 +6,8 @@ QT       += core  gui  xml
 #-------------------------------------------------
 
 QT       += core gui
-
+QT      +=   uitools
+QT     +=    sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = myWindows
@@ -30,21 +31,24 @@ SOURCES += \
     logindialog.cpp \
     mywidget.cpp \
     counter.cpp \
-    readxml.cpp
+    readxml.cpp \
+    testuiloader.cpp
 
 HEADERS += \
         mainwindow.h \
     logindialog.h \
     mywidget.h \
     counter.h \
-    readxml.h
+    readxml.h \
+    testuiloader.h
 
 FORMS += \
         mainwindow.ui \
     logindialog.ui \
     mywidget.ui \
     counter.ui \
-    readxml.ui
+    readxml.ui \
+    testuiloader.ui
 
 RESOURCES += \
     myicon.qrc

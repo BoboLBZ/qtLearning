@@ -14,6 +14,12 @@ class TestUILoader : public QMainWindow
 public:
     explicit TestUILoader(QWidget *parent = 0);
     ~TestUILoader();
+protected:
+    void loaderUI(QString filepath);
+private slots:
+
+
+    void on_actionadd_triggered();
 
 private:
     Ui::TestUILoader *ui;

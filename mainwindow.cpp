@@ -3,6 +3,7 @@
 #include "qdialog.h"
 #include "mywidget.h"
 #include "counter.h"
+#include "testaddwidget.h"
 #include <QMouseEvent>
 #include <QTimer>
 #include <QDateTime>

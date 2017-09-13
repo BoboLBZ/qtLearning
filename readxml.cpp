@@ -268,7 +268,8 @@ bool readXML::xmlOperate(QString opType)
 void readXML::on_pushButton_show_clicked()
 {
    ui->listWidget_showXML->clear();
-    readxml("xmlwriteByStream.xml");
+   readxml( ui->lineEdit_filename->text() );
+   // readxml("xmlwriteByStream.xml");
    //readxmlByStream();
 }
 

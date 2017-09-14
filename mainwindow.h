@@ -28,6 +28,7 @@ protected:
     void mousePressEvent(QMouseEvent *e);
     void keyPressEvent(QKeyEvent *e);
     void timerEvent(QTimerEvent *e);
+    void paintEvent(QPaintEvent *e);
 };
 
 #endif // MAINWINDOW_H

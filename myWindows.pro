@@ -32,7 +32,8 @@ SOURCES += \
     mywidget.cpp \
     counter.cpp \
     readxml.cpp \
-    testuiloader.cpp
+    testuiloader.cpp \
+    myemoji.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     mywidget.h \
     counter.h \
     readxml.h \
-    testuiloader.h
+    testuiloader.h \
+    myemoji.h
 
 FORMS += \
         mainwindow.ui \
@@ -48,7 +50,8 @@ FORMS += \
     mywidget.ui \
     counter.ui \
     readxml.ui \
-    testuiloader.ui
+    testuiloader.ui \
+    myemoji.ui
 
 RESOURCES += \
     myicon.qrc

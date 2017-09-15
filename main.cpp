@@ -3,6 +3,7 @@
 #include <logindialog.h>
 #include <readxml.h>
 #include <testuiloader.h>
+#include <myemoji.h>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -27,8 +28,10 @@ int main(int argc, char *argv[])
 //    TestUILoader l;
 //    l.show();
 
-    MainWindow w;
-    w.show();
+//    MainWindow w;
+//    w.show();
+    MyEmoji me;
+    me.show();
 
     return a.exec();
 }

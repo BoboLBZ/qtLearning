@@ -8,7 +8,7 @@ MyEmoji::MyEmoji(QWidget *parent) :
     ui(new Ui::MyEmoji)
 {
     ui->setupUi(this);
-    resize(420,420);
+    resize(640,420);
 }
 
 MyEmoji::~MyEmoji()
@@ -85,4 +85,39 @@ void MyEmoji::paintEvent(QPaintEvent *)
      painter.setPen(QPen(QColor( 138,43,226),5));
      painter.setFont(QFont("Times", 20, QFont::Bold));
      painter.drawText(150,215,"Hahaha Rhys --->");
+
+     //
+    QColor up( 242,154,44);
+    QColor down( 255,215,0);
+    QColor brown(128,42,42);
+    QColor white( 250,250,250);
+    int r2=15,r3=30;
+   x=540;
+   y=100;
+   r1=100;
+   painter.setPen(QPen(up));
+   painter.setBrush(QBrush(up));
+   painter.drawPie(QRectF(x-r1,y-r1,r1*2,r1*2),0*16,180*16);
+
+   painter.setPen(QPen(down));
+   painter.setBrush(QBrush(down));
+   painter.drawPie(QRectF(x-r1,y-r1,r1*2,r1*2),180*16,180*16);
+
+   painter.setPen(QPen(white));
+   painter.setBrush(QBrush(white));
+   painter.drawEllipse(x-50-r3,y-r3,r3*2,r3*2);//left
+   painter.drawEllipse(x+50-r3,y-r3,r3*2,r3*2);//right
+
+   painter.setPen(QPen(brown));
+   painter.setBrush(QBrush(brown));
+   painter.drawEllipse(x-50-r2,y-r2,r2*2,r2*2);//left
+   painter.drawEllipse(x+50-r2,y-r2,r2*2,r2*2);//right
+
+   painter.drawEllipse(x-r3,200-r3*2,r3*2,r3*2);//
+
+//   y+=220;
+//   painter.setPen(QPen(down));
+//   painter.setBrush(QBrush(down));
+//   painter.drawEllipse(x-r1,y-r1,r1*2,r1*2);
+
 }

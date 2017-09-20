@@ -58,9 +58,13 @@
    </widget>
    <widget class="QMenu" name="menucounter">
     <property name="title">
-     <string>counter</string>
+     <string>Funcatons</string>
     </property>
-    <addaction name="action_open"/>
+    <addaction name="action_openCal"/>
+    <addaction name="action_readxml"/>
+    <addaction name="action_emojis"/>
+    <addaction name="action_painter"/>
+    <addaction name="action_uilaoder"/>
    </widget>
    <addaction name="menufile"/>
    <addaction name="menucounter"/>
@@ -79,9 +83,29 @@
     <string>new(&amp;N)</string>
    </property>
   </action>
-  <action name="action_open">
+  <action name="action_openCal">
    <property name="text">
-    <string>open</string>
+    <string>openCal</string>
+   </property>
+  </action>
+  <action name="action_readxml">
+   <property name="text">
+    <string>readxml</string>
+   </property>
+  </action>
+  <action name="action_emojis">
+   <property name="text">
+    <string>emojis</string>
+   </property>
+  </action>
+  <action name="action_painter">
+   <property name="text">
+    <string>painter</string>
+   </property>
+  </action>
+  <action name="action_uilaoder">
+   <property name="text">
+    <string>uilaoder</string>
    </property>
   </action>
  </widget>

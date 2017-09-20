@@ -40,9 +40,12 @@ void LoginDialog::on_pushButton_clicked()
          if(query.next())
         {
             if(query.value(1).toString() == ui->lineEdit_pw->text().trimmed())
-                this->accept();
+                  this->accept();
+            else
+                QMessageBox::warning(this,tr("error"),tr("your password is wrong "),QMessageBox::Yes);
         }
-         QMessageBox::warning(this,tr("error"),tr("your passward or username is wrong"),QMessageBox::Yes);
+         else
+              QMessageBox::warning(this,tr("error"),tr("can't find your username "),QMessageBox::Yes);
 
         //without database;
 //      if (ui->lineEdit_name->text().trimmed() == tr("rhys") && ui->lineEdit_pw->text().trimmed() == tr("asdfghjkl"))

@@ -21,6 +21,16 @@ private slots:
 
     void on_action_open_triggered();
 
+    void on_action_openCal_triggered();
+
+    void on_action_readxml_triggered();
+
+    void on_action_emojis_triggered();
+
+    void on_action_painter_triggered();
+
+    void on_action_uilaoder_triggered();
+
 private:
     Ui::MainWindow *ui;
     int timer1;

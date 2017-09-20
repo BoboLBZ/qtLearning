@@ -25,6 +25,10 @@ void TestUILoader::loaderUI(QString filepath)
     QFile uifile(filepath);
     uifile.open(QFile::ReadOnly);
     QWidget *qwidget=loader.load(&uifile, this);
+    QStringList list=loader.availableLayouts();
+    foreach (QString s, list) {
+          //qDebug()<<s;
+    }
      uifile.close();
     //qwidget->showNormal();
     qwidget->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);

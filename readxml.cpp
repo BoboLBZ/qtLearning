@@ -11,7 +11,7 @@ readXML::readXML(QWidget *parent) :
 {
     ui->setupUi(this);
     writexmlByStream();
-  //  createxml();
+    createxml();
 //    readxml();
 }
 
@@ -269,8 +269,8 @@ void readXML::on_pushButton_show_clicked()
 {
    ui->listWidget_showXML->clear();
    readxml( ui->lineEdit_filename->text() );
-   // readxml("xmlwriteByStream.xml");
-   //readxmlByStream();
+//    readxml("xmlwriteByStream.xml");
+   readxmlByStream();
 }
 
 void readXML::on_pushButton_add_clicked()

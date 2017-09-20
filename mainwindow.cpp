@@ -3,6 +3,9 @@
 #include "qdialog.h"
 #include "mywidget.h"
 #include "counter.h"
+#include <readxml.h>
+#include <testuiloader.h>
+#include <myemoji.h>
 
 #include <QMouseEvent>
 #include <QTimer>
@@ -27,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //timerevent
     timer1=startTimer(4000);
 
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 }
 
 MainWindow::~MainWindow()
@@ -74,11 +78,12 @@ void MainWindow::timeupdate()
 {
     QDateTime time=QDateTime::currentDateTime();
     ui->label->setText(time.toString("yyyy-MM-dd hh:mm:ss dddd"));
-    update();
-//    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-//    int rand=qrand() % 200;
-//      ui->pushButton->setText(tr("%1,%2").arg(rand).arg(rand));
-//     ui->pushButton->move(rand,rand);
+    //qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+    int w=qrand() % this->geometry().width();
+    int h=qrand() %this->geometry().height();
+    ui->pushButton->setText(tr("%1,%2").arg(w).arg(h));
+    ui->pushButton->move(w,h);
+     update();
 }
 void MainWindow::timerEvent(QTimerEvent *e)
 {
@@ -150,4 +155,34 @@ void MainWindow::paintEvent(QPaintEvent *e)
     ex=300-qSin(qDegreesToRadians(double(hour*30)))*6;
     ey=200+qCos(qDegreesToRadians(double(hour*30)))*6;
     painter.drawLine(bx,by,ex,ey);
+}
+
+void MainWindow::on_action_openCal_triggered()
+{
+    counter *coun=new counter();
+    coun->show();
+}
+
+void MainWindow::on_action_readxml_triggered()
+{
+    readXML *r=new readXML();
+    r->show();
+}
+
+void MainWindow::on_action_emojis_triggered()
+{
+    MyEmoji *m=new MyEmoji();
+    m->show();
+}
+
+void MainWindow::on_action_painter_triggered()
+{
+    myWidget *w=new myWidget();
+    w->show();
+}
+
+void MainWindow::on_action_uilaoder_triggered()
+{
+    TestUILoader *t=new TestUILoader();
+    t->show();
 }
